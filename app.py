@@ -707,6 +707,8 @@ def load_feature_importances():
 def compute_learning_curve(model_name):
     # Retrieve data
     df = load_data()
+    # Downsample to prevent OOM and timeouts on Streamlit Cloud
+    df = df.sample(n=min(1000, len(df)), random_state=42)
     df_eng = engineer_features(df)
 
     feature_cols = load_feature_names()
@@ -726,7 +728,7 @@ def compute_learning_curve(model_name):
         return None, None, None
 
     train_sizes, train_scores, test_scores = learning_curve(
-        model, X, y, cv=3, n_jobs=-1,
+        model, X, y, cv=3, n_jobs=1,
         train_sizes=np.linspace(0.1, 1.0, 5),
         scoring="neg_mean_squared_error"
     )
