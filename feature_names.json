@@ -1,1 +1,1 @@
-["MedInc", "HouseAge", "AveRooms", "AveBedrms", "Population", "AveOccup", "Latitude", "Longitude", "rooms_per_household", "bedrooms_ratio", "population_per_household", "income_per_room"]
+["MedInc", "HouseAge", "AveRooms", "AveBedrms", "Population", "AveOccup", "Latitude", "Longitude", "rooms_per_household", "bedrooms_ratio", "population_per_household", "income_per_room", "age_per_room", "income_age_interaction"]

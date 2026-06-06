@@ -2,251 +2,234 @@
   "Linear Regression": [
     {
       "feature": "Latitude",
-      "importance": 0.214905
+      "importance": 0.223782
     },
     {
       "feature": "Longitude",
-      "importance": 0.20085
+      "importance": 0.206704
     },
     {
       "feature": "MedInc",
-      "importance": 0.198376
+      "importance": 0.118609
     },
     {
       "feature": "rooms_per_household",
-      "importance": 0.092385
-    },
-    {
-      "feature": "population_per_household",
-      "importance": 0.069548
-    },
-    {
-      "feature": "bedrooms_ratio",
-      "importance": 0.057737
-    },
-    {
-      "feature": "Population",
-      "importance": 0.056921
+      "importance": 0.073611
     },
     {
       "feature": "AveBedrms",
-      "importance": 0.050574
+      "importance": 0.07047
+    },
+    {
+      "feature": "population_per_household",
+      "importance": 0.059315
+    },
+    {
+      "feature": "bedrooms_ratio",
+      "importance": 0.057117
     },
     {
       "feature": "HouseAge",
-      "importance": 0.033942
+      "importance": 0.050403
     },
     {
-      "feature": "AveRooms",
-      "importance": 0.014177
+      "feature": "Population",
+      "importance": 0.045446
+    },
+    {
+      "feature": "age_per_room",
+      "importance": 0.033441
     },
     {
       "feature": "income_per_room",
-      "importance": 0.009692
+      "importance": 0.029043
+    },
+    {
+      "feature": "AveRooms",
+      "importance": 0.027136
+    },
+    {
+      "feature": "income_age_interaction",
+      "importance": 0.004854
     },
     {
       "feature": "AveOccup",
-      "importance": 0.000894
+      "importance": 6.9e-05
     }
   ],
   "Ridge Regression": [
     {
       "feature": "Latitude",
-      "importance": 0.214864
+      "importance": 0.223889
     },
     {
       "feature": "Longitude",
-      "importance": 0.200804
+      "importance": 0.206793
     },
     {
       "feature": "MedInc",
-      "importance": 0.198431
+      "importance": 0.118738
     },
     {
       "feature": "rooms_per_household",
-      "importance": 0.092438
-    },
-    {
-      "feature": "population_per_household",
-      "importance": 0.069576
-    },
-    {
-      "feature": "bedrooms_ratio",
-      "importance": 0.057743
-    },
-    {
-      "feature": "Population",
-      "importance": 0.056934
+      "importance": 0.073694
     },
     {
       "feature": "AveBedrms",
-      "importance": 0.050591
-    },
-    {
-      "feature": "HouseAge",
-      "importance": 0.033988
-    },
-    {
-      "feature": "AveRooms",
-      "importance": 0.014178
-    },
-    {
-      "feature": "income_per_room",
-      "importance": 0.009567
-    },
-    {
-      "feature": "AveOccup",
-      "importance": 0.000884
-    }
-  ],
-  "Lasso Regression": [
-    {
-      "feature": "Latitude",
-      "importance": 0.216825
-    },
-    {
-      "feature": "Longitude",
-      "importance": 0.20265
-    },
-    {
-      "feature": "MedInc",
-      "importance": 0.199417
-    },
-    {
-      "feature": "rooms_per_household",
-      "importance": 0.093549
+      "importance": 0.070376
     },
     {
       "feature": "population_per_household",
-      "importance": 0.069327
+      "importance": 0.059381
     },
     {
       "feature": "bedrooms_ratio",
-      "importance": 0.057622
-    },
-    {
-      "feature": "Population",
-      "importance": 0.056318
-    },
-    {
-      "feature": "AveBedrms",
-      "importance": 0.050895
+      "importance": 0.057061
     },
     {
       "feature": "HouseAge",
-      "importance": 0.03504
+      "importance": 0.050303
     },
     {
-      "feature": "AveRooms",
-      "importance": 0.013235
+      "feature": "Population",
+      "importance": 0.045487
+    },
+    {
+      "feature": "age_per_room",
+      "importance": 0.033331
     },
     {
       "feature": "income_per_room",
-      "importance": 0.004873
+      "importance": 0.029113
+    },
+    {
+      "feature": "AveRooms",
+      "importance": 0.026996
+    },
+    {
+      "feature": "income_age_interaction",
+      "importance": 0.004762
     },
     {
       "feature": "AveOccup",
-      "importance": 0.000247
+      "importance": 7.7e-05
     }
   ],
   "Random Forest": [
     {
       "feature": "income_per_room",
-      "importance": 0.357638
+      "importance": 0.441336
     },
     {
       "feature": "MedInc",
-      "importance": 0.168689
-    },
-    {
-      "feature": "rooms_per_household",
-      "importance": 0.14195
+      "importance": 0.120845
     },
     {
       "feature": "Longitude",
-      "importance": 0.076006
+      "importance": 0.088748
     },
     {
       "feature": "Latitude",
-      "importance": 0.070551
+      "importance": 0.080241
+    },
+    {
+      "feature": "rooms_per_household",
+      "importance": 0.072264
     },
     {
       "feature": "AveOccup",
-      "importance": 0.059128
+      "importance": 0.067537
     },
     {
-      "feature": "HouseAge",
-      "importance": 0.040781
+      "feature": "income_age_interaction",
+      "importance": 0.035807
     },
     {
       "feature": "AveBedrms",
-      "importance": 0.021938
+      "importance": 0.017018
+    },
+    {
+      "feature": "age_per_room",
+      "importance": 0.016653
     },
     {
       "feature": "bedrooms_ratio",
-      "importance": 0.01968
-    },
-    {
-      "feature": "AveRooms",
-      "importance": 0.014655
-    },
-    {
-      "feature": "Population",
-      "importance": 0.014639
+      "importance": 0.016279
     },
     {
       "feature": "population_per_household",
-      "importance": 0.014345
+      "importance": 0.012328
+    },
+    {
+      "feature": "Population",
+      "importance": 0.012042
+    },
+    {
+      "feature": "AveRooms",
+      "importance": 0.011434
+    },
+    {
+      "feature": "HouseAge",
+      "importance": 0.007469
     }
   ],
   "Gradient Boosting": [
     {
       "feature": "income_per_room",
-      "importance": 0.345698
+      "importance": 0.46416
     },
     {
       "feature": "MedInc",
-      "importance": 0.199695
-    },
-    {
-      "feature": "rooms_per_household",
-      "importance": 0.129829
+      "importance": 0.107975
     },
     {
       "feature": "Longitude",
-      "importance": 0.096078
+      "importance": 0.106018
     },
     {
       "feature": "Latitude",
-      "importance": 0.089645
+      "importance": 0.099175
+    },
+    {
+      "feature": "rooms_per_household",
+      "importance": 0.087128
     },
     {
       "feature": "AveOccup",
-      "importance": 0.06079
+      "importance": 0.054558
     },
     {
-      "feature": "HouseAge",
-      "importance": 0.037882
+      "feature": "income_age_interaction",
+      "importance": 0.031796
     },
     {
       "feature": "bedrooms_ratio",
-      "importance": 0.009741
-    },
-    {
-      "feature": "AveBedrms",
-      "importance": 0.00961
+      "importance": 0.009498
     },
     {
       "feature": "AveRooms",
-      "importance": 0.0093
+      "importance": 0.008457
+    },
+    {
+      "feature": "AveBedrms",
+      "importance": 0.00796
+    },
+    {
+      "feature": "age_per_room",
+      "importance": 0.006838
     },
     {
       "feature": "population_per_household",
-      "importance": 0.006328
+      "importance": 0.005805
+    },
+    {
+      "feature": "HouseAge",
+      "importance": 0.005799
     },
     {
       "feature": "Population",
-      "importance": 0.005405
+      "importance": 0.004833
     }
-  ]
+  ],
+  "Stacking Ensemble": []
 }

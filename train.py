@@ -24,11 +24,13 @@ from pathlib import Path
 import joblib
 import numpy as np
 import pandas as pd
-from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
+from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor, HistGradientBoostingRegressor, StackingRegressor
 from sklearn.linear_model import Lasso, LinearRegression, Ridge
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.compose import TransformedTargetRegressor
+from sklearn.svm import SVR
 from tabulate import tabulate
 
 from eda import HousingEDA
@@ -49,6 +51,8 @@ def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     df["bedrooms_ratio"] = df["AveBedrms"] / df["AveRooms"].replace(0, np.nan)
     df["population_per_household"] = df["Population"] / df["AveOccup"].replace(0, np.nan)
     df["income_per_room"] = df["MedInc"] / df["AveRooms"].replace(0, np.nan)
+    df["age_per_room"] = df["HouseAge"] / (df["AveRooms"] + 1e-6)
+    df["income_age_interaction"] = df["MedInc"] * df["HouseAge"]
     # Fill any resulting NaN / inf with column median
     df.replace([np.inf, -np.inf], np.nan, inplace=True)
     df.fillna(df.median(numeric_only=True), inplace=True)
@@ -87,10 +91,11 @@ def _evaluate(name, model, X_tr, y_tr, X_te, y_te, n_features) -> dict:
 
 def _feature_importances(model, feature_names: list[str]) -> list[dict]:
     """Return a sorted list of {feature, importance} dicts."""
-    if hasattr(model, "feature_importances_"):
-        importances = model.feature_importances_
-    elif hasattr(model, "coef_"):
-        importances = np.abs(model.coef_)
+    base_model = model.regressor_ if hasattr(model, "regressor_") else model
+    if hasattr(base_model, "feature_importances_"):
+        importances = base_model.feature_importances_
+    elif hasattr(base_model, "coef_"):
+        importances = np.abs(base_model.coef_)
     else:
         return []
     total = importances.sum() or 1.0
@@ -158,22 +163,30 @@ def main(csv_path: str | None = None) -> None:
     # 7. Train models
     # ------------------------------------------------------------------
     models: dict[str, object] = {
-        "Linear Regression": LinearRegression(),
-        "Ridge Regression": Ridge(alpha=1.0),
-        "Lasso Regression": Lasso(alpha=0.001, max_iter=10_000),
-        "Random Forest": RandomForestRegressor(
+        "Linear Regression": TransformedTargetRegressor(LinearRegression(), func=np.log1p, inverse_func=np.expm1),
+        "Ridge Regression": TransformedTargetRegressor(Ridge(alpha=1.0), func=np.log1p, inverse_func=np.expm1),
+        "Random Forest": TransformedTargetRegressor(RandomForestRegressor(
             n_estimators=200, max_depth=15, random_state=42, n_jobs=-1,
-        ),
-        "Gradient Boosting": GradientBoostingRegressor(
+        ), func=np.log1p, inverse_func=np.expm1),
+        "Gradient Boosting": TransformedTargetRegressor(GradientBoostingRegressor(
             n_estimators=200, learning_rate=0.1, max_depth=5, random_state=42,
-        ),
+        ), func=np.log1p, inverse_func=np.expm1),
     }
+
+    estimators = [
+        ("hgb", HistGradientBoostingRegressor(random_state=42)),
+        ("rf", RandomForestRegressor(n_estimators=100, max_depth=10, random_state=42, n_jobs=-1)),
+        ("svr", SVR(C=1.0, epsilon=0.1))
+    ]
+    stacking_reg = StackingRegressor(estimators=estimators, final_estimator=Ridge())
+    models["Stacking Ensemble"] = TransformedTargetRegressor(stacking_reg, func=np.log1p, inverse_func=np.expm1)
+
     short_names = {
         "Linear Regression": "lr",
         "Ridge Regression": "ridge",
-        "Lasso Regression": "lasso",
         "Random Forest": "rf",
         "Gradient Boosting": "gb",
+        "Stacking Ensemble": "stack",
     }
 
     results: dict[str, dict] = {}

@@ -5,9 +5,11 @@
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.4-F7931E?logo=scikit-learn&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
+**🚀 Live Deployment:** [https://tanmay-housewise.streamlit.app/](https://tanmay-housewise.streamlit.app/)
+
 ## Overview
 
-**HouseWise** is a production-ready machine learning web application built with Streamlit. It predicts property prices based on housing metrics (like age, rooms, and location) using California Housing data. The app provides robust Exploratory Data Analysis (EDA), trains and compares 5 different regression models, and gives users an interactive interface to predict and understand house prices.
+**HouseWise** is a production-ready machine learning web application built with Streamlit. It predicts property prices based on housing metrics (like age, rooms, and location) using California Housing data. It features an opulent **Art Deco** aesthetic with a luxurious Gatsby-inspired UI. The application provides robust Exploratory Data Analysis (EDA), trains and compares 5 different regression models—including a powerful Stacking Ensemble—and gives users an interactive interface to predict and understand house prices.
 
 ## Features
 
@@ -19,17 +21,17 @@
 
 ## ML Model Performance
 
-The application trains five distinct regression models on the dataset (80/20 train-test split, standard scaling applied). 
+The application trains five distinct regression models on the dataset (80/20 train-test split, standard scaling, and log-transformed target). 
 
 | Model | Expected R² | Expected RMSE |
 |---|---|---|
-| **Linear Regression** | ~0.61 | ~$72,000 |
-| **Ridge Regression** | ~0.61 | ~$72,000 |
-| **Lasso Regression** | ~0.61 | ~$72,000 |
-| **Gradient Boosting** | ~0.78 | ~$53,000 |
-| **Random Forest** | ~0.81 | ~$49,000 |
+| **Stacking Ensemble** | **~0.85** | **~$45,000** |
+| Random Forest | ~0.83 | ~$47,000 |
+| Gradient Boosting | ~0.80 | ~$51,000 |
+| Ridge Regression | ~0.61 | ~$72,000 |
+| Linear Regression | ~0.61 | ~$72,000 |
 
-*(Note: Random Forest generally emerges as the best model for this specific dataset due to its ability to capture non-linear geographical and income relationships.)*
+*(Note: The Stacking Ensemble combines HistGradientBoosting, Random Forest, and SVR, using Ridge as the final estimator to achieve the best performance.)*
 
 ## Tech Stack
 
